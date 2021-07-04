@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/as_et_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="Number:"
+            android:inputType="number"
+            android:maxLength="4"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/as_et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="Name:"
+            android:inputType="text"
+            android:maxLength="10"
+            app:layout_constraintTop_toBottomOf="@id/as_et_number" />
+
+        <EditText
+            android:id="@+id/as_et_score_chinese"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="Score Chinese:"
+            android:inputType="number"
+            android:maxLength="3"
+            app:layout_constraintTop_toBottomOf="@id/as_et_name" />
+
+        <EditText
+            android:id="@+id/as_et_score_math"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="Score Math:"
+            android:inputType="number"
+            android:maxLength="3"
+            app:layout_constraintTop_toBottomOf="@id/as_et_score_chinese" />
+
+        <EditText
+            android:id="@+id/as_et_score_english"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="Score English:"
+            android:inputType="number"
+            android:maxLength="3"
+            app:layout_constraintTop_toBottomOf="@id/as_et_score_math" />
+
+        <Button
+            android:id="@+id/as_btn_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Add"
+            app:layout_constraintTop_toBottomOf="@id/as_et_score_english" />
+
+        <EditText
+            android:id="@+id/as_et_number_i_wanna_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="number"
+            android:inputType="number"
+            android:maxLength="4"
+            app:layout_constraintTop_toBottomOf="@id/as_btn_add" />
+
+        <Button
+            android:id="@+id/as_btn_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="delete"
+            app:layout_constraintTop_toBottomOf="@id/as_et_number_i_wanna_delete" />
+
+        <TextView
+            android:id="@+id/as_tv_remaining"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:layout_constraintTop_toBottomOf="@id/as_btn_delete" />
+
+        <TextView
+            android:id="@+id/as_tv_students_information"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:layout_constraintTop_toBottomOf="@id/as_tv_remaining" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    
+</ScrollView>

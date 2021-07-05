@@ -1,4 +1,4 @@
-package com.jni.test.base;
+package com.jni.test.activity.base;
 
 import android.os.Bundle;
 
@@ -30,20 +30,20 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     public void finish() {
-        super.finish();
         if (!mOnFinishedCalled) {
             onFinish();
             mOnFinishedCalled = true;
         }
+        super.finish();
     }
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         if (!mOnFinishedCalled) {
             onFinish();
             mOnFinishedCalled = true;
         }
+        super.onDestroy();
     }
 
     /**

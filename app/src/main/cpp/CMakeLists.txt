@@ -1,11 +1,16 @@
 cmake_minimum_required(VERSION 3.4.1)
 
 add_library(mytest SHARED
+
+        android_log.h
+
         stringTest.c
         prime.c
-        android_log.h
+        student.c
+
         file.h
         file.c
+
         )
 
 # Include libraries needed for hello-jni lib

@@ -11,13 +11,10 @@ import android.widget.TextView;
 
 import com.jni.test.R;
 import com.jni.test.adapter.TextWatcherAdapter;
-import com.jni.test.base.BaseActivity;
+import com.jni.test.activity.base.BaseActivity;
 import com.jni.test.jni.NativePrime;
 import com.jni.test.util.TU;
 import com.jni.test.util.ToastUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class PrimeActivity extends BaseActivity implements View.OnClickListener {
 
@@ -29,9 +26,7 @@ public class PrimeActivity extends BaseActivity implements View.OnClickListener 
 
     private TextView mTvPrimes;
 
-    private NativePrime mPrime;
-
-    private List<Integer> mPrimeList;
+    private NativePrime mNativePrime;
 
     public static void start(Activity a) {
         Intent intent = new Intent(a, PrimeActivity.class);
@@ -48,15 +43,14 @@ public class PrimeActivity extends BaseActivity implements View.OnClickListener 
         mEtFromNumber = findViewById(R.id.ap_et_from);
         mEtToNumber = findViewById(R.id.ap_et_to);
         mBtnSavePrimes = findViewById(R.id.ap_btn_save_primes);
-        mBtnRecoverPrimes = findViewById(R.id.ap_btn_recovery_primes);
+        mBtnRecoverPrimes = findViewById(R.id.ap_btn_recover_primes);
         mTvPrimes = findViewById(R.id.ap_tv_primes);
     }
 
     @Override
     protected void initData() {
-        mPrime = new NativePrime();
-        mPrime.init(getFilesDir().getAbsolutePath());
-        mPrimeList = new ArrayList<>();
+        mNativePrime = new NativePrime();
+        mNativePrime.init(getFilesDir().getAbsolutePath());
     }
 
     @Override
@@ -72,14 +66,14 @@ public class PrimeActivity extends BaseActivity implements View.OnClickListener 
         public void afterTextChanged(Editable s) {
             String fromNumber = mEtFromNumber.getText().toString();
             String toNumber = mEtToNumber.getText().toString();
-            mPrimeList.clear();
+            mNativePrime.clear();
             if (TU.isEmpty(fromNumber) || TU.isEmpty(toNumber)) {
                 mTvPrimes.setText(null);
             } else {
                 int from = Integer.parseInt(fromNumber);
                 int to = Integer.parseInt(toNumber);
-                mPrime.getPrimes(mPrimeList, from, to);
-                mTvPrimes.setText(mPrimeList.toString());
+                mNativePrime.getPrimes(from, to);
+                mTvPrimes.setText(mNativePrime.toString());
             }
         }
     };
@@ -88,11 +82,11 @@ public class PrimeActivity extends BaseActivity implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ap_btn_save_primes:
-                if (mPrimeList == null || mPrimeList.size() == 0) {
+                if (mNativePrime.size() == 0) {
                     ToastUtils.showShort(this, "There is no prime!");
                 } else {
-                    if (mPrimeList.size() > 0) {
-                        mPrime.savePrimes(mPrimeList);
+                    if (mNativePrime.size() > 0) {
+                        mNativePrime.savePrimes();
                         ToastUtils.showShort(this, "Primes saved!");
                     } else {
                         ToastUtils.showShort(this, "No primes!");
@@ -100,16 +94,15 @@ public class PrimeActivity extends BaseActivity implements View.OnClickListener 
                 }
                 break;
 
-            case R.id.ap_btn_recovery_primes:
-                mPrimeList.clear();
-                mPrime.recoveryPrimes(mPrimeList);
-                mTvPrimes.setText(mPrimeList.toString());
+            case R.id.ap_btn_recover_primes:
+                mNativePrime.recoverPrimes();
+                mTvPrimes.setText(mNativePrime.toString());
                 break;
         }
     }
 
     @Override
     protected void onFinish() {
-        mPrime.uninit();
+        mNativePrime.uninit();
     }
 }

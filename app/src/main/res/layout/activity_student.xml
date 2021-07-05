@@ -67,7 +67,7 @@
             app:layout_constraintTop_toBottomOf="@id/as_et_score_english" />
 
         <EditText
-            android:id="@+id/as_et_number_i_wanna_delete"
+            android:id="@+id/as_et_delete_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -82,14 +82,32 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="delete"
-            app:layout_constraintTop_toBottomOf="@id/as_et_number_i_wanna_delete" />
+            app:layout_constraintTop_toBottomOf="@id/as_et_delete_number" />
+
+        <Button
+            android:id="@+id/as_btn_store"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="store"
+            app:layout_constraintTop_toBottomOf="@id/as_btn_delete" />
+
+        <Button
+            android:id="@+id/as_btn_recover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="reserved"
+            app:layout_constraintTop_toBottomOf="@id/as_btn_store" />
+
 
         <TextView
             android:id="@+id/as_tv_remaining"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            app:layout_constraintTop_toBottomOf="@id/as_btn_delete" />
+            app:layout_constraintTop_toBottomOf="@id/as_btn_recover" />
+
 
         <TextView
             android:id="@+id/as_tv_students_information"
@@ -99,5 +117,5 @@
             app:layout_constraintTop_toBottomOf="@id/as_tv_remaining" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    
+
 </ScrollView>

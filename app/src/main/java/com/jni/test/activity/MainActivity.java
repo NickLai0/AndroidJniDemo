@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.jni.test.R;
-import com.jni.test.base.BaseActivity;
+import com.jni.test.activity.base.BaseActivity;
 
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {

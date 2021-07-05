@@ -32,7 +32,7 @@
         app:layout_constraintTop_toBottomOf="@id/ap_et_to" />
 
     <Button
-        android:id="@+id/ap_btn_recovery_primes"
+        android:id="@+id/ap_btn_recover_primes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ap_btn_recovery_primes">
+        app:layout_constraintTop_toBottomOf="@id/ap_btn_recover_primes">
 
         <TextView
             android:id="@+id/ap_tv_primes"

@@ -146,7 +146,7 @@ Java_com_jni_test_jni_NativePrime_savePrimes(
  * @param jList
  */
 JNIEXPORT void JNICALL
-Java_com_jni_test_jni_NativePrime_recoveryPrimes(
+Java_com_jni_test_jni_NativePrime_recoverPrimes(
         JNIEnv *env, jobject jobj,
         jobject jList) {
     FILE *file = fopen(path, "r");
@@ -169,3 +169,4 @@ Java_com_jni_test_jni_NativePrime_recoveryPrimes(
         (*env)->DeleteLocalRef(env, jInteger);
     }
 }
+

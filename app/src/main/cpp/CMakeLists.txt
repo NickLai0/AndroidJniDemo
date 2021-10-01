@@ -11,9 +11,17 @@ add_library(mytest SHARED
         file.h
         file.c
 
+        storeutils/ArrayList.h
+        storeutils/ArrayList.c
+
+        log/log.h
+        log/log.c
+
+        test/testArrayList.c
+        test/storeDifferentPointerTypes.c
         )
 
 # Include libraries needed for hello-jni lib
 target_link_libraries(mytest
-#                      android
-                      log)
+        #                      android
+        log)

@@ -1,3 +1,4 @@
+*.exe
 *.iml
 .gradle
 /local.properties

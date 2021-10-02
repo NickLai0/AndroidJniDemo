@@ -17,7 +17,7 @@
  * it would be set to 8 automatically.
  * @param size an integer that larger or equals to 8
  */
-ArrayList Initiate(int size) {
+ArrayList InitList(int size) {
     ArrayList list = malloc(sizeof(ArrayListStructure));
     if (size < 8) {
         size = 8;
@@ -29,7 +29,7 @@ ArrayList Initiate(int size) {
     //printf("initiate-> size=%d, size * sizeof(void *) = %d", size, size * sizeof(void *));
 }
 
-void Uninitiate(ArrayList list) {
+void UninitList(ArrayList list) {
     if (list != NULL) {
         free(list);
         //printf("uninitiate-> list freed.");

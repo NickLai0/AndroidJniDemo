@@ -7,7 +7,7 @@
 #include <stdint.h>
 #include "LinkedList.h"
 
-LinkedList Initiate() {
+LinkedList InitList() {
     LinkedList list = malloc(sizeof(LinkedListNode));
     list->length = 0;
     list->head = list->tail = NULL;
@@ -109,7 +109,7 @@ void Clear(LinkedList list) {
 //    list->length = 0;
 }
 
-void Uninitiate(LinkedList list) {
+void UninitList(LinkedList list) {
     if (list != NULL) {
         Clear(list);
         free(list);

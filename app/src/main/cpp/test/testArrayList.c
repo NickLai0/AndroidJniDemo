@@ -43,7 +43,7 @@ void test2() {
                         {"Elena", 18, 'f'},
                         {"Bob",   60, 'm'}};
 
-    ArrayList list = Initiate(8);
+    ArrayList list = InitList(8);
     for (int i = 0; i < STUDENT_NUMBER; ++i) {
         Add(list, &stuArr[i]);
     }
@@ -56,12 +56,12 @@ void test2() {
         }
     }
 
-    Uninitiate(list);
+    UninitList(list);
 }
 
 void test1() {
     const int INIT_SIZE = 8;
-    ArrayList list = Initiate(INIT_SIZE);
+    ArrayList list = InitList(INIT_SIZE);
     int *intPointer;
 
     //Test add function.
@@ -111,5 +111,5 @@ void test1() {
         intPointer = (int *) Get(list, i);
         free(intPointer);
     }
-    Uninitiate(list);
+    UninitList(list);
 }

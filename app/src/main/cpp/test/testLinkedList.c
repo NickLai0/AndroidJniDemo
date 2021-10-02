@@ -43,7 +43,7 @@ void test2() {
                         {"Elena", 18, 'f'},
                         {"Bob",   60, 'm'}};
 
-    LinkedList list = Initiate();
+    LinkedList list = InitList();
     for (int i = 0; i < STUDENT_NUMBER; ++i) {
         Add(list, &stuArr[i]);
     }
@@ -56,12 +56,12 @@ void test2() {
         }
     }
 
-    Uninitiate(list);
+    UninitList(list);
 }
 
 void test1() {
     const int INIT_SIZE = 8;
-    LinkedList list = Initiate();
+    LinkedList list = InitList();
     int *intPointer;
 
     //Test add function.
@@ -112,5 +112,5 @@ void test1() {
         intPointer = (int *) Get(list, i);
         free(intPointer);
     }
-    Uninitiate(list);
+    UninitList(list);
 }

@@ -10,9 +10,9 @@ typedef struct {
     void **elements;
 } ArrayListStructure, *ArrayList;
 
-ArrayList Initiate(int size);
+ArrayList InitList(int size);
 
-void Uninitiate(ArrayList list);
+void UninitList(ArrayList list);
 
 int Length(ArrayList list);
 

@@ -16,9 +16,9 @@ typedef struct {
     LinkedListNode *tail;
 } *LinkedList;
 
-LinkedList Initiate();
+LinkedList InitList();
 
-void Uninitiate(LinkedList list);
+void UninitList(LinkedList list);
 
 int Length(LinkedList list);
 

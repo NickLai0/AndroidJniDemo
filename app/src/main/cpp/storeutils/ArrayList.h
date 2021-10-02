@@ -10,24 +10,26 @@ typedef struct {
     void **elements;
 } ArrayListStructure, *ArrayList;
 
-ArrayList initiate(int size);
+ArrayList Initiate(int size);
 
-void uninitiate(ArrayList arrayList);
+void Uninitiate(ArrayList list);
 
-int length(ArrayList arrayList);
+int Length(ArrayList list);
 
-int capacity(ArrayList arrayList);
+int Capacity(ArrayList list);
 
-int add(ArrayList arrayList, void *element);
+int Add(ArrayList list, void *element);
 
-int insert(ArrayList arrayList, void *element, int index);
+int Insert(ArrayList list, void *element, int index);
 
-void *get(ArrayList arrayList, int index);
+void *Get(ArrayList list, int index);
 
-int indexOf(ArrayList list, void *element);
+int IndexOf(ArrayList list, void *element);
 
-void *deleteByIndex(ArrayList list, int index);
+void *DeleteByIndex(ArrayList list, int index);
 
-void *delete(ArrayList list, void *element);
+void *Delete(ArrayList list, void *element);
+
+void Clear(ArrayList list);
 
 #endif

@@ -17,7 +17,7 @@
  * it would be set to 8 automatically.
  * @param size an integer that larger or equals to 8
  */
-ArrayList initiate(int size) {
+ArrayList Initiate(int size) {
     ArrayList list = malloc(sizeof(ArrayListStructure));
     if (size < 8) {
         size = 8;
@@ -29,14 +29,14 @@ ArrayList initiate(int size) {
     //printf("initiate-> size=%d, size * sizeof(void *) = %d", size, size * sizeof(void *));
 }
 
-void uninitiate(ArrayList list) {
+void Uninitiate(ArrayList list) {
     if (list != NULL) {
         free(list);
         //printf("uninitiate-> list freed.");
     }
 }
 
-int indexOf(ArrayList list, void *element) {
+int IndexOf(ArrayList list, void *element) {
     for (int i = 0; i < list->length; ++i) {
         if (list->elements[i] == element) {
             return i;
@@ -45,11 +45,11 @@ int indexOf(ArrayList list, void *element) {
     return -1;
 }
 
-int length(ArrayList list) { return list->length; }
+int Length(ArrayList list) { return list->length; }
 
-int capacity(ArrayList list) { return list->capacity; }
+int Capacity(ArrayList list) { return list->capacity; }
 
-int insert(ArrayList list, void *element, int index) {
+int Insert(ArrayList list, void *element, int index) {
     if (list->length + 1 > list->capacity) {
         //Make a bigger array.
         int newCapacity = list->capacity + list->capacity / 2;
@@ -73,11 +73,11 @@ int insert(ArrayList list, void *element, int index) {
     return index;
 }
 
-int add(ArrayList list, void *element) {
-    return insert(list, element, list->length);
+int Add(ArrayList list, void *element) {
+    return Insert(list, element, list->length);
 }
 
-void *deleteByIndex(ArrayList list, int index) {
+void *DeleteByIndex(ArrayList list, int index) {
     void *temp = NULL;
     if (index >= 0 && index < list->length) {
         temp = list->elements[index];
@@ -89,14 +89,17 @@ void *deleteByIndex(ArrayList list, int index) {
     return temp;
 }
 
-void *delete(ArrayList list, void *element) {
-    return deleteByIndex(list, indexOf(list, element));
+void *Delete(ArrayList list, void *element) {
+    return DeleteByIndex(list, IndexOf(list, element));
 }
 
-void *get(ArrayList list, int index) {
+void *Get(ArrayList list, int index) {
     if (index >= 0 && index < list->length) {
         return list->elements[index];
     }
     return NULL;
 }
 
+void Clear(ArrayList list) {
+    list->length = 0;
+}

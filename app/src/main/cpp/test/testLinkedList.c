@@ -5,13 +5,13 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <malloc.h>
-#include "../storeutils/ArrayList.h"
+#include "../storeutils/LinkedList.h"
 
 void test1();
 
 void test2();
 
-void printArrayList(ArrayList list) {
+void printList(LinkedList list) {
     int *intPointer;
     //Test get function.
     for (int i = 0; i < Length(list); ++i) {
@@ -43,7 +43,7 @@ void test2() {
                         {"Elena", 18, 'f'},
                         {"Bob",   60, 'm'}};
 
-    ArrayList list = Initiate(8);
+    LinkedList list = Initiate();
     for (int i = 0; i < STUDENT_NUMBER; ++i) {
         Add(list, &stuArr[i]);
     }
@@ -61,7 +61,7 @@ void test2() {
 
 void test1() {
     const int INIT_SIZE = 8;
-    ArrayList list = Initiate(INIT_SIZE);
+    LinkedList list = Initiate();
     int *intPointer;
 
     //Test add function.
@@ -75,9 +75,9 @@ void test1() {
     intPointer = malloc(sizeof(int));
     *intPointer = 0;
     Insert(list, intPointer, 0);
-    printArrayList(list);
+    printList(list);
 
-    printf("\nTest insert -1 and bigger than the length of ArrayList start ---------------:\n");
+    printf("\nTest insert -1 and bigger than the length of LinkedList start ---------------:\n");
 
     intPointer = malloc(sizeof(int));
     *intPointer = -1;
@@ -87,15 +87,16 @@ void test1() {
     *intPointer = INT32_MAX;
     Insert(list, intPointer, -1);
 
-    printArrayList(list);
+    printList(list);
 
-    printf("Test insert -1 and bigger than the length of ArrayList end -----------------:\n");
+    printf("Test insert -1 and bigger than the length of LinkedList end -----------------:\n");
 
     printf("\nValue %d at index of %d\n", *intPointer, IndexOf(list, intPointer));
 
     printf("\nDelete %d from list.%s\n", *intPointer,
            Delete(list, intPointer) == NULL ? "failed!" : "Success!");
-    printArrayList(list);
+
+    printList(list);
     //Free the memory of this variable from the heap.
     free(intPointer);
 
@@ -103,7 +104,7 @@ void test1() {
     *intPointer = 11111111;
     printf("\nDelete %d from list.%s\n", *intPointer,
            Delete(list, intPointer) == NULL ? "failed!" : "Success!");
-    printArrayList(list);
+    printList(list);
     free(intPointer);
 
     //Free all of memory from the heap.

@@ -15,12 +15,15 @@ add_library(mytest SHARED
         storeutils/ArrayList.c
         storeutils/LinkedList.h
         storeutils/LinkedList.c
+        storeutils/ArrayStack.h
+        storeutils/ArrayStack.c
 
         log/log.h
         log/log.c
 
         test/testArrayList.c
         test/testLinkedList.c
+        test/testArrayStack.c
         test/storeDifferentPointerTypes.c
         )
 

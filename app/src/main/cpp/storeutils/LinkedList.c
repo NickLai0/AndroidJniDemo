@@ -9,14 +9,14 @@
 
 LinkedList InitList() {
     LinkedList list = malloc(sizeof(LinkedListNode));
-    list->length = 0;
+    list->size = 0;
     list->head = list->tail = NULL;
     return list;
 }
 
 
 void *DeleteByIndex(LinkedList list, int index) {
-    if (list->length == 0 || index < 0 || index >= list->length) {
+    if (list->size == 0 || index < 0 || index >= list->size) {
         return NULL;
     }
     LinkedListNode *tempNode = NULL;
@@ -31,14 +31,14 @@ void *DeleteByIndex(LinkedList list, int index) {
         } else {
             list->tail = NULL;
         }
-    } else if (index == list->length - 1) {
+    } else if (index == list->size - 1) {
         //Remove the old tail.
         tempNode = list->tail;
         list->tail = list->tail->previous;
         list->tail->next = NULL;
     } else {
         //What you wanna find is in the middle of the list.
-        int mid = list->length / 2;
+        int mid = list->size / 2;
         if (index < mid) {
             tempNode = list->head->next;
             int i = 1;
@@ -48,7 +48,7 @@ void *DeleteByIndex(LinkedList list, int index) {
             }
         } else {
             tempNode = list->tail->previous;
-            int i = list->length - 2;
+            int i = list->size - 2;
             while (i != index) {
                 tempNode = tempNode->previous;
                 i--;
@@ -62,14 +62,14 @@ void *DeleteByIndex(LinkedList list, int index) {
         //Found one.
         tempElement = tempNode->element;
         //reduce one.
-        list->length--;
+        list->size--;
         free(tempNode);
     }
     return tempElement;
 }
 
 void *Delete(LinkedList list, void *element) {
-    if (list->length == 0) {
+    if (list->size == 0) {
         return NULL;
     }
     LinkedListNode *tempNode = list->head;
@@ -95,7 +95,7 @@ void *Delete(LinkedList list, void *element) {
             tempNode->previous->next = tempNode->next;
             tempNode->next->previous = tempNode->previous;
         }
-        list->length--;
+        list->size--;
         tempElement = tempNode->element;
         free(tempNode);
     }
@@ -103,7 +103,7 @@ void *Delete(LinkedList list, void *element) {
 }
 
 void Clear(LinkedList list) {
-    while (list->length > 0) {
+    while (list->size > 0) {
         DeleteByIndex(list, 0);
     }
 //    list->length = 0;
@@ -116,11 +116,11 @@ void UninitList(LinkedList list) {
     }
 }
 
-int Length(LinkedList list) {
-    return list->length;
+int size(LinkedList list) {
+    return list->size;
 }
 
-int Capacity(LinkedList list) {
+int length(LinkedList list) {
     return INT32_MAX;
 }
 
@@ -128,39 +128,39 @@ int Add(LinkedList list, void *element) {
     LinkedListNode *tempNode = malloc(sizeof(LinkedListNode));
     tempNode->element = element;
     tempNode->previous = tempNode->next = NULL;
-    if (list->length == 0) {
+    if (list->size == 0) {
         list->head = list->tail = tempNode;
     } else {
         tempNode->previous = list->tail;
         list->tail->next = tempNode;
         list->tail = tempNode;
     }
-    list->length++;
+    list->size++;
     //Return the index of the new element.
-    return (list->length - 1);
+    return (list->size - 1);
 }
 
 int Insert(LinkedList list, void *element, int index) {
-    if (index < 0 || index > list->length) {
+    if (index < 0 || index > list->size) {
         //Link the element to the last.
-        index = list->length;
+        index = list->size;
     }
     LinkedListNode *newNode = malloc(sizeof(LinkedListNode));
     newNode->element = element;
     newNode->previous = newNode->next = NULL;
-    if (list->length == 0) {
+    if (list->size == 0) {
         list->head = list->tail = newNode;
     } else if (index == 0) {
         newNode->next = list->head;
         list->head->previous = newNode;
         list->head = newNode;
-    } else if (index == list->length) {
+    } else if (index == list->size) {
         newNode->previous = list->tail;
         list->tail->next = newNode;
         list->tail = newNode;
     } else {
         LinkedListNode *tempNode = NULL;
-        if (index < list->length / 2) {
+        if (index < list->size / 2) {
             tempNode = list->head->next;
             int i = 1;
             while (i != index) {
@@ -169,7 +169,7 @@ int Insert(LinkedList list, void *element, int index) {
             }
         } else {
             tempNode = list->tail->previous;
-            int i = list->length - 2;
+            int i = list->size - 2;
             while (i != index) {
                 tempNode = tempNode->previous;
                 i--;
@@ -180,17 +180,17 @@ int Insert(LinkedList list, void *element, int index) {
         tempNode->previous->next = newNode;
         tempNode->previous = newNode;
     }
-    list->length++;
+    list->size++;
     return index;
 }
 
 void *Get(LinkedList list, int index) {
-    if (list->length == 0 || index < 0 || index >= list->length) {
+    if (list->size == 0 || index < 0 || index >= list->size) {
         return NULL;
     }
     void *element = NULL;
     LinkedListNode *node = NULL;
-    if (index < list->length / 2) {
+    if (index < list->size / 2) {
         node = list->head;
         int i = 0;
         while (i != index) {
@@ -199,7 +199,7 @@ void *Get(LinkedList list, int index) {
         }
     } else {
         node = list->tail;
-        int i = list->length - 1;
+        int i = list->size - 1;
         while (i != index) {
             node = node->previous;
             i--;
@@ -211,10 +211,10 @@ void *Get(LinkedList list, int index) {
 }
 
 int IndexOf(LinkedList list, void *element) {
-    if (list->length > 0) {
+    if (list->size > 0) {
         LinkedListNode *node = list->head;
         int i = 0;
-        while (i < list->length) {
+        while (i < list->size) {
             if (node->element == element) {
                 return i;
             }

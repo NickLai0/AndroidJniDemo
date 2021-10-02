@@ -5,8 +5,8 @@
 #define ARRAY_LIST_H
 
 typedef struct {
-    int length;
-    int capacity;
+    int size;
+    int len;
     void **elements;
 } ArrayListStructure, *ArrayList;
 
@@ -14,9 +14,9 @@ ArrayList InitList(int size);
 
 void UninitList(ArrayList list);
 
-int Length(ArrayList list);
+int size(ArrayList list);
 
-int Capacity(ArrayList list);
+int length(ArrayList list);
 
 int Add(ArrayList list, void *element);
 

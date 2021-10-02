@@ -11,7 +11,7 @@ typedef struct node {
 } LinkedListNode;
 
 typedef struct {
-    int length;
+    int size;
     LinkedListNode *head;
     LinkedListNode *tail;
 } *LinkedList;
@@ -20,9 +20,9 @@ LinkedList InitList();
 
 void UninitList(LinkedList list);
 
-int Length(LinkedList list);
+int size(LinkedList list);
 
-int Capacity(LinkedList list);
+int length(LinkedList list);
 
 int Add(LinkedList list, void *element);
 

@@ -22,8 +22,8 @@ ArrayList InitList(int size) {
     if (size < 8) {
         size = 8;
     }
-    list->length = 0;
-    list->capacity = size;
+    list->size = 0;
+    list->len = size;
     list->elements = malloc(size * sizeof(void *));
     return list;
     //printf("initiate-> size=%d, size * sizeof(void *) = %d", size, size * sizeof(void *));
@@ -31,13 +31,14 @@ ArrayList InitList(int size) {
 
 void UninitList(ArrayList list) {
     if (list != NULL) {
+        free(list->elements);
         free(list);
         //printf("uninitiate-> list freed.");
     }
 }
 
 int IndexOf(ArrayList list, void *element) {
-    for (int i = 0; i < list->length; ++i) {
+    for (int i = 0; i < list->size; ++i) {
         if (list->elements[i] == element) {
             return i;
         }
@@ -45,46 +46,46 @@ int IndexOf(ArrayList list, void *element) {
     return -1;
 }
 
-int Length(ArrayList list) { return list->length; }
+int size(ArrayList list) { return list->size; }
 
-int Capacity(ArrayList list) { return list->capacity; }
+int length(ArrayList list) { return list->len; }
 
 int Insert(ArrayList list, void *element, int index) {
-    if (list->length + 1 > list->capacity) {
+    if (list->size + 1 > list->len) {
         //Make a bigger array.
-        int newCapacity = list->capacity + list->capacity / 2;
+        int newCapacity = list->len + list->len / 2;
         void **newElements = malloc(newCapacity * sizeof(void *));
-        memcpy(newElements, list->elements, sizeof(void *) * list->length);
+        memcpy(newElements, list->elements, sizeof(void *) * list->size);
         free(list->elements);
         //Assign with new values.
         list->elements = newElements;
-        list->capacity = newCapacity;
+        list->len = newCapacity;
     }
-    if (index < 0 || index > list->length) {
-        index = list->length;
+    if (index < 0 || index > list->size) {
+        index = list->size;
     }
-    if (index < list->length) {
-        for (int i = list->length - 1; i >= index; i--) {
+    if (index < list->size) {
+        for (int i = list->size - 1; i >= index; i--) {
             list->elements[i + 1] = list->elements[i];
         }
     }
     list->elements[index] = element;
-    list->length++;
+    list->size++;
     return index;
 }
 
 int Add(ArrayList list, void *element) {
-    return Insert(list, element, list->length);
+    return Insert(list, element, list->size);
 }
 
 void *DeleteByIndex(ArrayList list, int index) {
     void *temp = NULL;
-    if (index >= 0 && index < list->length) {
+    if (index >= 0 && index < list->size) {
         temp = list->elements[index];
-        for (int i = index; i < list->length - 1; ++i) {
+        for (int i = index; i < list->size - 1; ++i) {
             list->elements[i] = list->elements[i + 1];
         }
-        list->length--;
+        list->size--;
     }
     return temp;
 }
@@ -94,12 +95,12 @@ void *Delete(ArrayList list, void *element) {
 }
 
 void *Get(ArrayList list, int index) {
-    if (index >= 0 && index < list->length) {
+    if (index >= 0 && index < list->size) {
         return list->elements[index];
     }
     return NULL;
 }
 
 void Clear(ArrayList list) {
-    list->length = 0;
+    list->size = 0;
 }

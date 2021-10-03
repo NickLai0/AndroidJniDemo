@@ -17,6 +17,8 @@ add_library(mytest SHARED
         storeutils/LinkedList.c
         storeutils/ArrayStack.h
         storeutils/ArrayStack.c
+        storeutils/ArrayQueue.c
+        storeutils/ArrayQueue.h
         storeutils/LinkedStack.h
         storeutils/LinkedStack.c
 
@@ -27,6 +29,7 @@ add_library(mytest SHARED
         test/testLinkedList.c
         test/testArrayStack.c
         test/testLinkedStack.c
+        test/testArrayQueue.c
         test/storeDifferentPointerTypes.c
         )
 

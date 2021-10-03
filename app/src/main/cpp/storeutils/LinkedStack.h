@@ -25,7 +25,7 @@ int Size(LinkedStack stack);
 
 int Length(LinkedStack stack);
 
-int IsStackEmpty(LinkedStack stack);
+int IsEmptyStack(LinkedStack stack);
 
 void Push(LinkedStack stack, void *element);
 

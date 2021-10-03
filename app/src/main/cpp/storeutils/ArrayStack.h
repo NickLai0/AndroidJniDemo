@@ -19,7 +19,7 @@ int Size(ArrayStack stack);
 
 int Length(ArrayStack stack);
 
-int IsStackEmpty(ArrayStack stack);
+int IsEmptyStack(ArrayStack stack);
 
 void Push(ArrayStack stack, void *element);
 

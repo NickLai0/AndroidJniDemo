@@ -33,7 +33,7 @@ int Length(ArrayStack stack) {
     return stack->length;
 }
 
-int IsStackEmpty(ArrayStack stack) {
+int IsEmptyStack(ArrayStack stack) {
     return stack->top == 0;
 }
 

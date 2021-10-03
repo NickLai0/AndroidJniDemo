@@ -27,7 +27,7 @@ int Length(LinkedStack stack) {
     return INT32_MAX;
 }
 
-int IsStackEmpty(LinkedStack stack) {
+int IsEmptyStack(LinkedStack stack) {
     return stack->size == 0;
 }
 

@@ -10,19 +10,19 @@ int main() {
     LinkedStack stack = InitStack();
     char *str = "Hello World!!!";
     char *ch = NULL;
-    printf("Before pushing data: IsStackEmpty=%d\n", IsStackEmpty(stack));
+    printf("Before pushing data: IsStackEmpty=%d\n", IsEmptyStack(stack));
     printf("Pushing string of \"%s\"\n", str);
     for (int i = 0; str[i] != '\0'; ++i) {
         Push(stack, &str[i]);
     }
     printf("After pushing data: IsStackEmpty=%d, size=%d, length=%d\n",
-           IsStackEmpty(stack), Size(stack), Length(stack));
+           IsEmptyStack(stack), Size(stack), Length(stack));
 
     ch = GetTop(stack);
     printf("\nGetTop(stack)=%c\n", *ch);
 
     printf("\n\nPopping all of data: \n");
-    while (!IsStackEmpty(stack)) {
+    while (!IsEmptyStack(stack)) {
         ch = Pop(stack);
         printf("%c", *ch);
     }

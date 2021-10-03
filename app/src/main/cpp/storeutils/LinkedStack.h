@@ -9,11 +9,11 @@
 typedef struct node {
     void *element;
     struct node *next;
-} LinkedStackNode, *LinkedStackNodePointer;
+} LinkedStackNodeStructure, *LinkedStackNodePointer;
 
 typedef struct {
     //The top of the stack;
-    LinkedStackNode *top;
+    LinkedStackNodeStructure *top;
     int size;
 } LinkedStackStructure, *LinkedStack;
 

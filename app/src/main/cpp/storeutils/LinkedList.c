@@ -8,7 +8,7 @@
 #include "LinkedList.h"
 
 LinkedList InitList() {
-    LinkedList list = malloc(sizeof(LinkedListNode));
+    LinkedList list = malloc(sizeof(LinkedListNodeStructure));
     list->size = 0;
     list->head = list->tail = NULL;
     return list;
@@ -19,7 +19,7 @@ void *DeleteByIndex(LinkedList list, int index) {
     if (list->size == 0 || index < 0 || index >= list->size) {
         return NULL;
     }
-    LinkedListNode *tempNode = NULL;
+    LinkedListNodeStructure *tempNode = NULL;
     if (index == 0) {
         //Remove the old head.
         tempNode = list->head;
@@ -72,7 +72,7 @@ void *Delete(LinkedList list, void *element) {
     if (list->size == 0) {
         return NULL;
     }
-    LinkedListNode *tempNode = list->head;
+    LinkedListNodeStructure *tempNode = list->head;
     while (tempNode->element != element) {
         if (tempNode->next == NULL) {
             tempNode = NULL;
@@ -125,7 +125,7 @@ int length(LinkedList list) {
 }
 
 int Add(LinkedList list, void *element) {
-    LinkedListNode *tempNode = malloc(sizeof(LinkedListNode));
+    LinkedListNodeStructure *tempNode = malloc(sizeof(LinkedListNodeStructure));
     tempNode->element = element;
     tempNode->previous = tempNode->next = NULL;
     if (list->size == 0) {
@@ -145,7 +145,7 @@ int Insert(LinkedList list, void *element, int index) {
         //Link the element to the last.
         index = list->size;
     }
-    LinkedListNode *newNode = malloc(sizeof(LinkedListNode));
+    LinkedListNodeStructure *newNode = malloc(sizeof(LinkedListNodeStructure));
     newNode->element = element;
     newNode->previous = newNode->next = NULL;
     if (list->size == 0) {
@@ -159,7 +159,7 @@ int Insert(LinkedList list, void *element, int index) {
         list->tail->next = newNode;
         list->tail = newNode;
     } else {
-        LinkedListNode *tempNode = NULL;
+        LinkedListNodeStructure *tempNode = NULL;
         if (index < list->size / 2) {
             tempNode = list->head->next;
             int i = 1;
@@ -189,7 +189,7 @@ void *Get(LinkedList list, int index) {
         return NULL;
     }
     void *element = NULL;
-    LinkedListNode *node = NULL;
+    LinkedListNodeStructure *node = NULL;
     if (index < list->size / 2) {
         node = list->head;
         int i = 0;
@@ -212,7 +212,7 @@ void *Get(LinkedList list, int index) {
 
 int IndexOf(LinkedList list, void *element) {
     if (list->size > 0) {
-        LinkedListNode *node = list->head;
+        LinkedListNodeStructure *node = list->head;
         int i = 0;
         while (i < list->size) {
             if (node->element == element) {

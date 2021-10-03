@@ -8,12 +8,12 @@ typedef struct node {
     void *element;
     struct node *previous;
     struct node *next;
-} LinkedListNode;
+} LinkedListNodeStructure;
 
 typedef struct {
     int size;
-    LinkedListNode *head;
-    LinkedListNode *tail;
+    LinkedListNodeStructure *head;
+    LinkedListNodeStructure *tail;
 } *LinkedList;
 
 LinkedList InitList();

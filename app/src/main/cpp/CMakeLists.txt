@@ -17,10 +17,13 @@ add_library(mytest SHARED
         storeutils/LinkedList.c
         storeutils/ArrayStack.h
         storeutils/ArrayStack.c
-        storeutils/ArrayQueue.c
-        storeutils/ArrayQueue.h
         storeutils/LinkedStack.h
         storeutils/LinkedStack.c
+        storeutils/ArrayQueue.c
+        storeutils/ArrayQueue.h
+        storeutils/LinkedQueue.c
+        storeutils/LinkedQueue.h
+
 
         log/log.h
         log/log.c
@@ -30,6 +33,7 @@ add_library(mytest SHARED
         test/testArrayStack.c
         test/testLinkedStack.c
         test/testArrayQueue.c
+        test/testLinkedQueue.c
         test/storeDifferentPointerTypes.c
         )
 

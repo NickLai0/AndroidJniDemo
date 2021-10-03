@@ -5,7 +5,45 @@
 #include <stdio.h>
 #include "../storeutils/ArrayQueue.h"
 
+void test1();
+
+void test2();
+
 int main() {
+//    test1();
+    test2();
+    return 0;
+}
+
+void test2() {
+    int const N = 8;
+    ArrayQueue queue = InitQueue(N);
+    char *str = "A string for testing ArrayQueue.";
+    int index = 0;
+    //Input n-1 elements.
+    for (int i = 1; i < N; ++i) {
+        Enqueue(queue, &str[index++]);
+    }
+    char *ch;
+    //Output n-1 elements.
+    while (Size(queue) > 0) {
+        ch = Poll(queue);
+        putchar(*ch);
+    }
+    printf("\n");
+    //Input n+1 elements.
+    for (int i = 1; i <= N + 1; ++i) {
+        Enqueue(queue, &str[index++]);
+    }
+    //Output n+1 elements and see whether it works normal.
+    while (Size(queue) > 0) {
+        ch = Poll(queue);
+        putchar(*ch);
+    }
+    UninitQueue(queue);
+}
+
+void test1() {
     ArrayQueue queue = InitQueue(8);
     char *str = "A string for testing ArrayQueue.";
 
@@ -32,5 +70,4 @@ int main() {
            IsEmptyQueue(queue), Size(queue));
 
     UninitQueue(queue);
-    return 0;
 }

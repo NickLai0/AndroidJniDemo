@@ -5,6 +5,7 @@
 #include <malloc.h>
 #include <string.h>
 #include <stddef.h>
+#include <stdio.h>
 #include "ArrayQueue.h"
 
 ArrayQueue InitQueue(int initLength) {
@@ -31,23 +32,22 @@ int IsEmptyQueue(ArrayQueue queue) {
 }
 
 int Size(ArrayQueue queue) {
-    return (queue->rear - queue->front + queue->length) % queue->length;
-//    if (queue->front == queue->rear) {
-//        return 0;
-//    } else if (queue->rear > queue->front) {
-//        return queue->rear - queue->front;
-//    } else {
-//        return queue->rear - queue->front + queue->length;
-//    }
+//    printf("length=%d, rear=%d, front=%d\n",
+//           queue->length, queue->rear, queue->front);
+    return (queue->length + queue->rear - queue->front) % queue->length;
 }
 
 void Enqueue(ArrayQueue queue, void *element) {
     if (Size(queue) == queue->length - 1) {//There is no space for the new element.
         int newLength = queue->length + queue->length / 2;
         void **newData = malloc(newLength * sizeof(void *));
-        memcpy(newData, queue->data, queue->length * sizeof(void *));
+        for (int i = 0, j = queue->front; i < queue->length; ++i, j = (j + 1) % queue->length) {
+            newData[i] = queue->data[j];
+        }
         free(queue->data);
         queue->data = newData;
+        queue->front = 0;
+        queue->rear = queue->length - 1;
         queue->length = newLength;
     }
     queue->data[queue->rear] = element;

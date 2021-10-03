@@ -32,7 +32,7 @@ int IsEmptyStack(LinkedStack stack) {
 }
 
 void Push(LinkedStack stack, void *element) {
-    LinkedStackNode *node = malloc(sizeof(LinkedStackNode));
+    LinkedStackNodeStructure *node = malloc(sizeof(LinkedStackNodeStructure));
     node->element = element;
     node->next = stack->top;
     stack->top = node;
@@ -42,7 +42,7 @@ void Push(LinkedStack stack, void *element) {
 void *Pop(LinkedStack stack) {
     void *element = NULL;
     if (stack->size > 0) {
-        LinkedStackNode *node = stack->top;
+        LinkedStackNodeStructure *node = stack->top;
         stack->top = stack->top->next;
         stack->size--;
 

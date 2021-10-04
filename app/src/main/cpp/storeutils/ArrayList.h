@@ -14,9 +14,9 @@ ArrayList InitList(int size);
 
 void UninitList(ArrayList list);
 
-int size(ArrayList list);
+int Size(ArrayList list);
 
-int length(ArrayList list);
+int Length(ArrayList list);
 
 int Add(ArrayList list, void *element);
 

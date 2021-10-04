@@ -14,11 +14,11 @@ void test2();
 void printArrayList(ArrayList list) {
     int *intPointer;
     //Test get function.
-    for (int i = 0; i < size(list); ++i) {
+    for (int i = 0; i < Size(list); ++i) {
         intPointer = (int *) Get(list, i);
         printf("list[%d]=%d\n", i, *intPointer);
     }
-    printf("size=%d, length=%d\n", size(list), length(list));
+    printf("size=%d, length=%d\n", Size(list), Length(list));
 }
 
 int main() {
@@ -27,7 +27,7 @@ int main() {
     printf("\n\nTest 1 end----------------\n\n");
     printf("Test 2 start--------------\n\n");
     test2();
-    printf("\n\nTest 2 start--------------\n\n");
+    printf("\n\nTest 2 end----------------\n\n");
     return 0;
 }
 
@@ -107,7 +107,7 @@ void test1() {
     free(intPointer);
 
     //Free all of memory from the heap.
-    for (int i = 0; i < size(list); ++i) {
+    for (int i = 0; i < Size(list); ++i) {
         intPointer = (int *) Get(list, i);
         free(intPointer);
     }

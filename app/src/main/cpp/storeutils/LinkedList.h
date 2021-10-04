@@ -20,9 +20,9 @@ LinkedList InitList();
 
 void UninitList(LinkedList list);
 
-int size(LinkedList list);
+int Size(LinkedList list);
 
-int length(LinkedList list);
+int Length(LinkedList list);
 
 int Add(LinkedList list, void *element);
 

@@ -14,11 +14,11 @@ void test2();
 void printList(LinkedList list) {
     int *intPointer;
     //Test get function.
-    for (int i = 0; i < size(list); ++i) {
+    for (int i = 0; i < Size(list); ++i) {
         intPointer = (int *) Get(list, i);
         printf("list[%d]=%d\n", i, *intPointer);
     }
-    printf("size=%d, length=%d\n", size(list), length(list));
+    printf("size=%d, length=%d\n", Size(list), Length(list));
 }
 
 int main() {
@@ -108,7 +108,7 @@ void test1() {
     free(intPointer);
 
     //Free all of memory from the heap.
-    for (int i = 0; i < size(list); ++i) {
+    for (int i = 0; i < Size(list); ++i) {
         intPointer = (int *) Get(list, i);
         free(intPointer);
     }

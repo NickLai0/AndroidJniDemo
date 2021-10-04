@@ -16,7 +16,7 @@ LinkedList InitList() {
 
 
 void *DeleteByIndex(LinkedList list, int index) {
-    if (list->size == 0 || index < 0 || index >= list->size) {
+    if (list == NULL || list->size == 0 || index < 0 || index >= list->size) {
         return NULL;
     }
     LinkedListNodeStructure *tempNode = NULL;
@@ -69,7 +69,7 @@ void *DeleteByIndex(LinkedList list, int index) {
 }
 
 void *Delete(LinkedList list, void *element) {
-    if (list->size == 0) {
+    if (list == NULL || list->size == 0) {
         return NULL;
     }
     LinkedListNodeStructure *tempNode = list->head;
@@ -103,6 +103,9 @@ void *Delete(LinkedList list, void *element) {
 }
 
 void Clear(LinkedList list) {
+    if (list == NULL) {
+        return;
+    }
     while (list->size > 0) {
         DeleteByIndex(list, 0);
     }
@@ -116,15 +119,18 @@ void UninitList(LinkedList list) {
     }
 }
 
-int size(LinkedList list) {
+int Size(LinkedList list) {
+    if (list == NULL) { return -1; }
     return list->size;
 }
 
-int length(LinkedList list) {
+int Length(LinkedList list) {
     return INT32_MAX;
 }
 
 int Add(LinkedList list, void *element) {
+    if (list == NULL) { return -1; }
+
     LinkedListNodeStructure *tempNode = malloc(sizeof(LinkedListNodeStructure));
     tempNode->element = element;
     tempNode->previous = tempNode->next = NULL;
@@ -141,6 +147,8 @@ int Add(LinkedList list, void *element) {
 }
 
 int Insert(LinkedList list, void *element, int index) {
+    if (list == NULL) { return -1; }
+
     if (index < 0 || index > list->size) {
         //Link the element to the last.
         index = list->size;
@@ -185,7 +193,7 @@ int Insert(LinkedList list, void *element, int index) {
 }
 
 void *Get(LinkedList list, int index) {
-    if (list->size == 0 || index < 0 || index >= list->size) {
+    if (list == NULL || list->size == 0 || index < 0 || index >= list->size) {
         return NULL;
     }
     void *element = NULL;
@@ -211,7 +219,7 @@ void *Get(LinkedList list, int index) {
 }
 
 int IndexOf(LinkedList list, void *element) {
-    if (list->size > 0) {
+    if (list != NULL && list->size > 0) {
         LinkedListNodeStructure *node = list->head;
         int i = 0;
         while (i < list->size) {

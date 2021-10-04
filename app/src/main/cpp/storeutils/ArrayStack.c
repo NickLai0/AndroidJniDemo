@@ -26,18 +26,26 @@ void UninitStack(ArrayStack stack) {
 }
 
 int Size(ArrayStack stack) {
+    if (stack == NULL) { return -1; }
     return stack->top;
 }
 
 int Length(ArrayStack stack) {
+    if (stack == NULL) { return -1; }
     return stack->length;
 }
 
 int IsEmptyStack(ArrayStack stack) {
+    if (stack == NULL) {
+        return 1;
+    }
     return stack->top == 0;
 }
 
-void Push(ArrayStack stack, void *element) {
+void *Push(ArrayStack stack, void *element) {
+    if (stack == NULL) {
+        return NULL;
+    }
     if (stack->top == stack->length) {
         int newLength = stack->length + stack->length / 2;
         void **newData = malloc(newLength * sizeof(void *));
@@ -48,10 +56,11 @@ void Push(ArrayStack stack, void *element) {
     }
     stack->data[stack->top] = element;
     stack->top++;
+    return element;
 }
 
 void *Pop(ArrayStack stack) {
-    if (stack->top > 0) {
+    if (stack != NULL && stack->top > 0) {
         --stack->top;
         return stack->data[stack->top];
     }
@@ -59,7 +68,7 @@ void *Pop(ArrayStack stack) {
 }
 
 void *GetTop(ArrayStack stack) {
-    if (stack->top > 0) {
+    if (stack != NULL && stack->top > 0) {
         return stack->data[stack->top - 1];
     }
     return NULL;

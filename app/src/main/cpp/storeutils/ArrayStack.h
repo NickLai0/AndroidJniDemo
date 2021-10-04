@@ -21,7 +21,7 @@ int Length(ArrayStack stack);
 
 int IsEmptyStack(ArrayStack stack);
 
-void Push(ArrayStack stack, void *element);
+void *Push(ArrayStack stack, void *element);
 
 void *Pop(ArrayStack stack);
 

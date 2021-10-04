@@ -23,13 +23,13 @@ int IsEmptyQueue(LinkedQueue queue);
 
 int Size(LinkedQueue queue);
 
-void Enqueue(LinkedQueue queue, void *element);
+int Enqueue(LinkedQueue queue, void *element);
 
 void *Dequeue(LinkedQueue queue);
 
 void *GetHead(LinkedQueue queue);
 
-void Add(LinkedQueue queue, void *element);
+int Add(LinkedQueue queue, void *element);
 
 void *Poll(LinkedQueue queue);
 

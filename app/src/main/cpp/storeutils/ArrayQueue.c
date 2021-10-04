@@ -28,16 +28,21 @@ void UninitQueue(ArrayQueue queue) {
 }
 
 int IsEmptyQueue(ArrayQueue queue) {
+    if (queue == NULL) { return 1; }
     return queue->front == queue->rear;
 }
 
 int Size(ArrayQueue queue) {
+    if (queue == NULL) { return -1; }
 //    printf("length=%d, rear=%d, front=%d\n",
 //           queue->length, queue->rear, queue->front);
     return (queue->length + queue->rear - queue->front) % queue->length;
 }
 
-void Enqueue(ArrayQueue queue, void *element) {
+int Enqueue(ArrayQueue queue, void *element) {
+    if (queue == NULL) {
+        return -1;
+    }
     if (Size(queue) == queue->length - 1) {//There is no space for the new element.
         int newLength = queue->length + queue->length / 2;
         void **newData = malloc(newLength * sizeof(void *));
@@ -51,10 +56,15 @@ void Enqueue(ArrayQueue queue, void *element) {
         queue->length = newLength;
     }
     queue->data[queue->rear] = element;
+    int index = queue->rear;
     queue->rear = (queue->rear + 1) % queue->length;
+    return index;
 }
 
 void *Dequeue(ArrayQueue queue) {
+    if (queue == NULL) {
+        return NULL;
+    }
     void *element = NULL;
     if (queue->front != queue->rear) {
         element = queue->data[queue->front];
@@ -64,14 +74,16 @@ void *Dequeue(ArrayQueue queue) {
 }
 
 void *GetHead(ArrayQueue queue) {
-    if (queue->front != queue->rear) {
-        return queue->data[queue->front];
+    if (queue != NULL) {
+        if (queue->front != queue->rear) {
+            return queue->data[queue->front];
+        }
     }
     return NULL;
 }
 
-void Add(ArrayQueue queue, void *element) {
-    Enqueue(queue, element);
+int Add(ArrayQueue queue, void *element) {
+    return Enqueue(queue, element);
 }
 
 void *Poll(ArrayQueue queue) {

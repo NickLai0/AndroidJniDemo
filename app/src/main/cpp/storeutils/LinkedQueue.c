@@ -22,7 +22,10 @@ int Size(LinkedQueue queue) {
     return queue->size;
 }
 
-void Enqueue(LinkedQueue queue, void *element) {
+int Enqueue(LinkedQueue queue, void *element) {
+    if (queue == NULL) {
+        return -1;
+    }
     LinkedQueueNode node = malloc(sizeof(LinkedQueueNodeStructure));
     node->element = element;
     node->next = NULL;
@@ -32,11 +35,13 @@ void Enqueue(LinkedQueue queue, void *element) {
         queue->rear->next = node;
         queue->rear = node;
     }
+    int index = queue->size;
     queue->size++;
+    return index;
 }
 
 void *Dequeue(LinkedQueue queue) {
-    if (queue->size == 0) {
+    if (queue == NULL || queue->size == 0) {
         return NULL;
     }
     LinkedQueueNode node = queue->front;
@@ -61,14 +66,14 @@ void UninitQueue(LinkedQueue queue) {
 }
 
 void *GetHead(LinkedQueue queue) {
-    if (queue->size == 0) {
+    if (queue == NULL || queue->size == 0) {
         return NULL;
     }
     return queue->front->element;
 }
 
-void Add(LinkedQueue queue, void *element) {
-    Enqueue(queue, element);
+int Add(LinkedQueue queue, void *element) {
+    return Enqueue(queue, element);
 }
 
 void *Poll(LinkedQueue queue) {

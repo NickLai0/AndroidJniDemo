@@ -20,13 +20,13 @@ int IsEmptyQueue(ArrayQueue queue);
 
 int Size(ArrayQueue queue);
 
-void Enqueue(ArrayQueue queue, void *element);
+int Enqueue(ArrayQueue queue, void *element);
 
 void *Dequeue(ArrayQueue queue);
 
 void *GetHead(ArrayQueue queue);
 
-void Add(ArrayQueue queue, void *element);
+int Add(ArrayQueue queue, void *element);
 
 void *Poll(ArrayQueue queue);
 

@@ -48,7 +48,7 @@ int IndexOf(ArrayList list, void *element) {
     return -1;
 }
 
-int Size(ArrayList list) {
+int LSize(ArrayList list) {
     if (list == NULL) {
         return -1;
     }
@@ -89,7 +89,7 @@ int Insert(ArrayList list, void *element, int index) {
     return index;
 }
 
-int Add(ArrayList list, void *element) {
+int LAdd(ArrayList list, void *element) {
     if (list == NULL) {
         return -1;
     }

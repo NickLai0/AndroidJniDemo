@@ -14,11 +14,11 @@ ArrayList InitList(int size);
 
 void UninitList(ArrayList list);
 
-int Size(ArrayList list);
+int LSize(ArrayList list);
 
 int Length(ArrayList list);
 
-int Add(ArrayList list, void *element);
+int LAdd(ArrayList list, void *element);
 
 int Insert(ArrayList list, void *element, int index);
 

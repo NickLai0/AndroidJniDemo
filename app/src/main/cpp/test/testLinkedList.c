@@ -14,11 +14,11 @@ void test2();
 void printList(LinkedList list) {
     int *intPointer;
     //Test get function.
-    for (int i = 0; i < Size(list); ++i) {
+    for (int i = 0; i < LSize(list); ++i) {
         intPointer = (int *) Get(list, i);
         printf("list[%d]=%d\n", i, *intPointer);
     }
-    printf("size=%d, length=%d\n", Size(list), Length(list));
+    printf("size=%d, length=%d\n", LSize(list), Length(list));
 }
 
 int main() {
@@ -45,7 +45,7 @@ void test2() {
 
     LinkedList list = InitList();
     for (int i = 0; i < STUDENT_NUMBER; ++i) {
-        Add(list, &stuArr[i]);
+        LAdd(list, &stuArr[i]);
     }
 
     StudentPtr stuPtr = NULL;
@@ -68,7 +68,7 @@ void test1() {
     for (int i = 1; i <= INIT_SIZE; i++) {
         intPointer = malloc(sizeof(int));
         *intPointer = i * 100;
-        Add(list, intPointer);
+        LAdd(list, intPointer);
     }
 
     //Test insert function.
@@ -108,7 +108,7 @@ void test1() {
     free(intPointer);
 
     //Free all of memory from the heap.
-    for (int i = 0; i < Size(list); ++i) {
+    for (int i = 0; i < LSize(list); ++i) {
         intPointer = (int *) Get(list, i);
         free(intPointer);
     }

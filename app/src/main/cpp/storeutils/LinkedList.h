@@ -20,11 +20,11 @@ LinkedList InitList();
 
 void UninitList(LinkedList list);
 
-int Size(LinkedList list);
+int LSize(LinkedList list);
 
 int Length(LinkedList list);
 
-int Add(LinkedList list, void *element);
+int LAdd(LinkedList list, void *element);
 
 int Insert(LinkedList list, void *element, int index);
 

@@ -119,7 +119,7 @@ void UninitList(LinkedList list) {
     }
 }
 
-int Size(LinkedList list) {
+int LSize(LinkedList list) {
     if (list == NULL) { return -1; }
     return list->size;
 }
@@ -128,7 +128,7 @@ int Length(LinkedList list) {
     return INT32_MAX;
 }
 
-int Add(LinkedList list, void *element) {
+int LAdd(LinkedList list, void *element) {
     if (list == NULL) { return -1; }
 
     LinkedListNodeStructure *tempNode = malloc(sizeof(LinkedListNodeStructure));

@@ -23,6 +23,8 @@ add_library(mytest SHARED
         storeutils/ArrayQueue.h
         storeutils/LinkedQueue.c
         storeutils/LinkedQueue.h
+        storeutils/SimpleArrayTree.c
+        storeutils/SimpleArrayTree.h
 
 
         log/log.h
@@ -35,6 +37,8 @@ add_library(mytest SHARED
         test/testArrayQueue.c
         test/testLinkedQueue.c
         test/storeDifferentPointerTypes.c
+        test/testFunctionPointer.c
+        test/testSimpleArrayTree.c
         )
 
 # Include libraries needed for hello-jni lib
